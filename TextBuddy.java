@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -363,8 +364,11 @@ public class TextBuddy {
 	 * This operation is used to sort the file in alphabetical order
 	 * @return  MESSAGE_SORTED
 	 * 				The message to say that the file has been sorted
+	 * @throws IOException 
 	 */
-	static String sort(){
+	static String sort() throws IOException{
+		Collections.sort(contentList);
+		writeToFile();
 		return  MESSAGE_SORTED;
 	}
 	
