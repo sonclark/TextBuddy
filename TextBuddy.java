@@ -372,12 +372,12 @@ public class TextBuddy {
 			int numberOfLine = 0;
 			String finalString ="";
 			for(String i : contentList){
-				if(i.contains(input)){
+				if(i.toLowerCase().contains(input.toLowerCase())){
 					numberOfLine++;
-					finalString += constructOutput(i,numberOfLine);
+					finalString += "\r\n"+removeEmptyLine(constructOutput(i,numberOfLine));
 				}
 			}
-			return String.format(MESSAGE_RETURN_SEARCH,numberOfLine);
+			return String.format(MESSAGE_RETURN_SEARCH,numberOfLine)+finalString;
 		}
 	}
 	
