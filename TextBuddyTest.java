@@ -67,6 +67,7 @@ public class TextBuddyTest {
 		buddy.addLine("add Ignore");
 		assertEquals("Invalid Search format test","invalid search format. Correct format : search <word_to_search>",buddy.search("search"));
 		assertEquals("Correct Format and word not found","total 0 line(s) found",buddy.search("search that"));
+		assertEquals("Correct Format and word found (ignore case)","total 2 line(s) found\r\n1. This is test\r\n2. Search this",buddy.search("search this"));
 	}
 
 }

@@ -359,8 +359,11 @@ public class TextBuddy {
 	 * @param userInput
 	 * 			 The commend the user input in containing the word that need to be searched
 	 * @return the number of lines contain the words and the full line
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	static String search(String userInput){
+	static String search(String userInput) throws FileNotFoundException, IOException{
+		readFromFile(fileName);
 		String input = getUserInput(userInput);
 		if(input.equalsIgnoreCase("")){
 			return String.format(INVALID_SEARCH_FORMAT);
