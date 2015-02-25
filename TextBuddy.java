@@ -148,6 +148,10 @@ public class TextBuddy {
 			return clear();
 		case DISPLAY:
 			return displayContent(fileName);
+		case SORT:
+			return sort();
+		case SEARCH:
+			return search(command);
 		case INVALID:
 			return String.format(INVALID_COMMAND);
 		case EXIT:
@@ -348,6 +352,7 @@ public class TextBuddy {
 		return String.format(MESSAGE_CLEARED,fileName);
 	}
 	
+	
 	/**
 	 * This operation is search for lines that contain the word the user want to search for
 	 * 
@@ -371,6 +376,7 @@ public class TextBuddy {
 		writeToFile();
 		return  MESSAGE_SORTED;
 	}
+	
 	
 	/**
 	 * This operation is used to close the writer used on the file

@@ -24,7 +24,7 @@ public class TextBuddyTest {
 	@SuppressWarnings("static-access")
 	@Test
 	public void testAdd() throws IOException {
-		assertEquals("Add Test","added to test.txt: "+'"'+"one"+'"',buddy.addLine("add one"));
+		assertEquals("Add Test","added to test.txt: "+'"'+"one little kid"+'"',buddy.addLine("add one little kid"));
 		assertEquals("invalid add format. Correct format : add <line_to_add>",buddy.addLine("add"));
 	}
 	
@@ -52,13 +52,20 @@ public class TextBuddyTest {
 	@SuppressWarnings("static-access")
 	@Test
 	public void testSort() throws IOException {
-		assertEquals("Add Test","added to test.txt: "+'"'+"one"+'"',buddy.addLine("add one"));
-		assertEquals("Add Test","added to test.txt: "+'"'+"two"+'"',buddy.addLine("add two"));
-		assertEquals("Add Test","added to test.txt: "+'"'+"three"+'"',buddy.addLine("add three"));
+		buddy.addLine("add one");
+		buddy.addLine("add two");
+		buddy.addLine("add three");
 		assertEquals("Sort Test","file has been sorted",buddy.sort());
 		assertEquals("Display after Sort","1. one\r\n2. three\r\n3. two",buddy.displayContent("test.txt"));
 	}
 	
-	
+	@SuppressWarnings("static-access")
+	@Test
+	public void testSearch() throws IOException {
+		buddy.addLine("add This is test");
+		buddy.addLine("add Search this");
+		buddy.addLine("add Ignore");
+		assertEquals("Invalid Search format test","invalid search format. Correct format : search <word_to_search>",buddy.search("search"));
+	}
 
 }
