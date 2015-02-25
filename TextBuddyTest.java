@@ -56,6 +56,7 @@ public class TextBuddyTest {
 		assertEquals("Add Test","added to test.txt: "+'"'+"two"+'"',buddy.addLine("add two"));
 		assertEquals("Add Test","added to test.txt: "+'"'+"three"+'"',buddy.addLine("add three"));
 		assertEquals("Sort Test","file has been sorted",buddy.sort());
+		assertEquals("Display after Sort","1. one\r\n2. three\r\n3. two",buddy.displayContent("test.txt"));
 	}
 	
 	
