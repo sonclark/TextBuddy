@@ -35,6 +35,7 @@ public class TextBuddy {
 	//Another set of messages, mostly used when invalid situations take place.
 	private static final String INVALID_COMMAND = "invalid command.";
 	private static final String INVALID_LINE_NUMBER = "line %1$s does not exist or out of bound.";
+	private static final String INVALID_SEARCH_FORMAT = "invalid search format. Correct format : search <word_to_search>";
 	private static final String INVALID_ADD_FORMAT = "invalid add format. Correct format : add <line_to_add>";
 	private static final String INVALID_DELETE_FORMAT = "invalid delete format. Correct format : delete <line_number>";
 	
@@ -346,7 +347,27 @@ public class TextBuddy {
 		return String.format(MESSAGE_CLEARED,fileName);
 	}
 	
-
+	/**
+	 * This operation is search for lines that contain the word the user want to search for
+	 * 
+	 * @param userInput
+	 * 			 The commend the user input in containing the word that need to be searched
+	 * @return the number of lines contain the words and the full line
+	 */
+	static String search(String userInput){
+		return "";
+	}
+	
+	
+	/**
+	 * This operation is used to sort the file in alphabetical order
+	 * @return  MESSAGE_SORTED
+	 * 				The message to say that the file has been sorted
+	 */
+	static String sort(){
+		return  MESSAGE_SORTED;
+	}
+	
 	/**
 	 * This operation is used to close the writer used on the file
 	 */
