@@ -42,11 +42,20 @@ public class TextBuddyTest {
 	
 	@SuppressWarnings("static-access")
 	@Test
-	public void testDisplay()throws IOException {
+	public void testDisplay() throws IOException {
 		assertEquals("Add Test","added to test.txt: "+'"'+"one"+'"',buddy.addLine("add one"));
 		assertEquals("Add Test","added to test.txt: "+'"'+"two"+'"',buddy.addLine("add two"));
 		assertEquals("Add Test","added to test.txt: "+'"'+"three"+'"',buddy.addLine("add three"));
 		assertEquals("Display Test","1. one\r\n2. two\r\n3. three",buddy.displayContent("test.txt"));
+	}
+	
+	@SuppressWarnings("static-access")
+	@Test
+	public void testSort() throws IOException {
+		assertEquals("Add Test","added to test.txt: "+'"'+"one"+'"',buddy.addLine("add one"));
+		assertEquals("Add Test","added to test.txt: "+'"'+"two"+'"',buddy.addLine("add two"));
+		assertEquals("Add Test","added to test.txt: "+'"'+"three"+'"',buddy.addLine("add three"));
+		assertEquals("Sort Test","file has been sorted",buddy.sort());
 	}
 	
 	

@@ -365,7 +365,7 @@ public class TextBuddy {
 	 * 				The message to say that the file has been sorted
 	 */
 	static String sort(){
-		return  MESSAGE_SORTED;
+		return  "";
 	}
 	
 	/**
