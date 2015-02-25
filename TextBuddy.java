@@ -361,7 +361,13 @@ public class TextBuddy {
 	 * @return the number of lines contain the words and the full line
 	 */
 	static String search(String userInput){
-		return INVALID_SEARCH_FORMAT;
+		String input = getUserInput(userInput);
+		if(input.equalsIgnoreCase("")){
+			return String.format(INVALID_SEARCH_FORMAT);
+		}
+		else{
+			return "total 0 line(s) found";
+		}
 	}
 	
 	
