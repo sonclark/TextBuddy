@@ -44,13 +44,18 @@ public class TextBuddy {
 	private static final int SECOND_COMMAND_INDEX = 1;
 	private static final int FIRST_LINE_NUMBER = 1;
 	
-	
+
 	//All possible command type
 	enum COMMAND_TYPE {
 		ADD , DELETE ,DISPLAY , CLEAR, INVALID, SORT , SEARCH ,EXIT ; 
 	}
 	
 	
+	public TextBuddy(String fileName) throws IOException {
+		processInput(fileName);
+	}
+
+
 	//contentList is used to store all content of the file into an ArrayList
 	private static ArrayList<String> contentList = new ArrayList<String>();
 	//Global Scanner object to scan for input
@@ -59,7 +64,7 @@ public class TextBuddy {
 	private static BufferedReader  reader = null;
 	private static BufferedWriter  writer = null;
 	//Define an empty String for fileName. Will be use globally for convenience.
-	private static String fileName = "";
+	static String fileName = "";
 
 
 	public static void main(String[] args) throws IOException{
@@ -104,7 +109,7 @@ public class TextBuddy {
 	 * 			 The name of the file we will be working with
 	 * @return a ready message with fileName
 	 */
-	private static String processInput (String fileName) throws IOException{
+	static String processInput (String fileName) throws IOException{
 		File file = new File(fileName);
 		if(!file.exists()){
 			file.createNewFile();
@@ -173,6 +178,10 @@ public class TextBuddy {
 			return COMMAND_TYPE.DELETE;
 		} else if (commandTypeString.equalsIgnoreCase("clear")) {
 			return COMMAND_TYPE.CLEAR;
+		} else if (commandTypeString.equalsIgnoreCase("sort")) {
+			return COMMAND_TYPE.SORT;
+		} else if (commandTypeString.equalsIgnoreCase("search")) {
+			return COMMAND_TYPE.SEARCH;
 		} else if (commandTypeString.equalsIgnoreCase("exit")) {
 			return COMMAND_TYPE.EXIT;
 		} else {
@@ -190,7 +199,7 @@ public class TextBuddy {
 	private static void setUpReaderAndWriter(String fileName)
 			throws FileNotFoundException, IOException {
 		readFromFile(fileName);
-		writeToFile();
+		//writeToFile();
 	}
 
 
@@ -207,7 +216,7 @@ public class TextBuddy {
 	 * @return finalString
 	 *  		 A string contains all content of the file
 	 */
-	private static String displayContent(String fileName) throws IOException{
+	static String displayContent(String fileName) throws IOException{
 		readFromFile(fileName);
 		String finalString ="";
 		if(contentList.isEmpty()){
@@ -238,7 +247,7 @@ public class TextBuddy {
 	/**
 	 * This operation is used to construct a proper output for displaying
 	 */
-	private static String constructOutput(String currentLine, int lineNumber) {
+	static String constructOutput(String currentLine, int lineNumber) {
 		String outputLine = lineNumber+". "+currentLine+"\r\n";
 		return outputLine;
 	}
@@ -250,7 +259,7 @@ public class TextBuddy {
 	 * 			 The line that user wants to be added into the file
 	 * @return status of the addition (Invalid or successful)
 	 */
-	private static String addLine(String userInput) throws IOException{
+	static String addLine(String userInput) throws IOException{
 		String inputLine = getUserInput(userInput);
 		if(inputLine.equalsIgnoreCase("")){
 			return String.format(INVALID_ADD_FORMAT);
@@ -303,7 +312,7 @@ public class TextBuddy {
 	 * 			 The line number that user wants to delete
 	 * @return status of deletion (invalid or success)
 	 */
-	private static String deleteLine(String userInput) throws IOException{
+	static String deleteLine(String userInput) throws IOException{
 		String input = getUserInput(userInput);
 		if(input.equalsIgnoreCase("")){
 			return String.format(INVALID_DELETE_FORMAT);
@@ -331,7 +340,7 @@ public class TextBuddy {
 	/**
 	 * This operation is used to clear all content in the file
 	 */
-	private static String clear() throws IOException{
+	static String clear() throws IOException{
 		contentList.clear();
 		writeToFile();
 		return String.format(MESSAGE_CLEARED,fileName);
