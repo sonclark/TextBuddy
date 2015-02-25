@@ -27,7 +27,7 @@ public class TextBuddy {
 	private static final String MESSAGE_DELETED = "deleted from %1$s: "+'"'+"%2$s"+'"';
 	private static final String MESSAGE_CLEARED = "all content deleted from %1$s";
 	private static final String MESSAGE_SORTED = "file has been sorted";
-	private static final String MESSAGE_RETURN_SEARCH = "total %1$s line(s) found";
+	private static final String MESSAGE_RETURN_SEARCH = "total %1$d line(s) found";
 	private static final String MESSAGE_EMPTY_FILE = "%1$s is empty";
 	private static final String MESSAGE_WELCOME = "Welcome to TextBuddy.";
 	private static final String MESSAGE_READY = "%1$s is ready for use.";
@@ -369,7 +369,15 @@ public class TextBuddy {
 			return String.format(INVALID_SEARCH_FORMAT);
 		}
 		else{
-			return "total 0 line(s) found";
+			int numberOfLine = 0;
+			String finalString ="";
+			for(String i : contentList){
+				if(i.contains(input)){
+					numberOfLine++;
+					finalString += constructOutput(i,numberOfLine);
+				}
+			}
+			return String.format(MESSAGE_RETURN_SEARCH,numberOfLine);
 		}
 	}
 	
