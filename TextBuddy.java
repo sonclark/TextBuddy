@@ -25,6 +25,8 @@ public class TextBuddy {
 	private static final String MESSAGE_ADDED = "added to %1$s: "+'"'+"%2$s"+'"';
 	private static final String MESSAGE_DELETED = "deleted from %1$s: "+'"'+"%2$s"+'"';
 	private static final String MESSAGE_CLEARED = "all content deleted from %1$s";
+	private static final String MESSAGE_SORTED = "file has been sorted";
+	private static final String MESSAGE_RETURN_SEARCH = "total %1$s line(s) found";
 	private static final String MESSAGE_EMPTY_FILE = "%1$s is empty";
 	private static final String MESSAGE_WELCOME = "Welcome to TextBuddy.";
 	private static final String MESSAGE_READY = "%1$s is ready for use.";
@@ -45,7 +47,7 @@ public class TextBuddy {
 	
 	//All possible command type
 	enum COMMAND_TYPE {
-		ADD , DELETE ,DISPLAY , CLEAR, INVALID, EXIT ; 
+		ADD , DELETE ,DISPLAY , CLEAR, INVALID, SORT , SEARCH ,EXIT ; 
 	}
 	
 	
@@ -391,7 +393,7 @@ public class TextBuddy {
 	private static String[] splitInputCommand(String command){
 		String[] commandArray;
 		if(command.trim().contains(" ")){
-			commandArray = command.trim().split(" ");
+			commandArray = command.trim().split(" ",2);
 		}
 		else{
 			commandArray = new String[1];
